@@ -1,0 +1,84 @@
+PROJECT: Personal Portfolio Website
+
+USER PROMPT:
+
+Create a modern and aesthetically pleasing personal portfolio website for a student named Sahana N Angadi.
+
+Requirements:
+
+1. Use only HTML and CSS in a single file.
+
+2. Theme should be soft pink, elegant, feminine, and professional.
+
+3. Make the design fully responsive for desktop and mobile devices.
+
+4. Include the following sections:
+
+   * Navigation Bar
+   * Hero Section
+   * About Me
+   * Skills & Tools
+   * Projects
+   * Hobbies & Interests
+   * Contact Section
+
+5. Hero Section:
+
+   * Display name "Sahana"
+   * Show that she is a 2nd Semester B.Tech CSE student at REVA University.
+   * Include a welcome message and call-to-action buttons.
+
+6. About Section:
+
+   * Include education details.
+   * Mention curiosity about programming, web technologies, and project building.
+
+7. Skills Section:
+
+   * Python
+   * C Programming
+   * Web Development
+   * HTML & CSS
+   * HTTP / WebSockets
+
+8. Soft Skills:
+
+   * Communication
+   * Teamwork
+   * Time Management
+   * Problem Solving
+   * Adaptability
+   * Creativity
+   * Discipline
+
+9. Projects Section:
+
+   * CCTV AI Dashboard
+   * Expense Tracker
+   * Task Manager
+   * Booking System
+
+10. Hobbies Section:
+
+    * Acting
+    * Dancing
+    * Reading Books
+    * Listening to Music
+    * Daily Exercise
+
+11. Contact Section:
+
+    * Email button
+    * Footer with copyright
+
+12. Design Requirements:
+
+    * Soft pink color palette
+    * Rounded cards
+    * Modern typography
+    * Hover animations
+    * Decorative blob backgrounds
+    * Professional portfolio appearance
+
+Expected Output:
+A complete single-file HTML portfolio website with embedded CSS and responsive design.
