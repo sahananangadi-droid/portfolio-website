@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fff7f9;
+            --pink-deep: #f4a9bd;
+            --pink-mid: #fcd5e0;
+            --pink-soft: #ffeaf0;
+            --ink: #5c3a44;
+            --ink-light: #8a6772;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(244, 169, 189, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Fraunces', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Decorative blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            background: rgba(255, 247, 249, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--pink-mid);
+        }
+
+        nav .logo {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--pink-deep);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--ink);
+            transition: color .2s;
+        }
+
+        nav ul li a:hover {
+            color: var(--pink-deep);
+        }
+
+        section {
+            padding: 120px 8% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            padding-top: 140px;
+        }
+
+        .hero-text {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: var(--pink-soft);
+            color: var(--pink-deep);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 14px;
+            line-height: 1.15;
+        }
+
+        .hero h1 span {
+            color: var(--pink-deep);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--ink-light);
+            max-width: 480px;
+            margin-bottom: 30px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: transform .2s, box-shadow .2s;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--pink-deep);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--pink-deep);
+            color: var(--pink-deep);
+        }
+
+        .btn-outline:hover {
+            background: var(--pink-soft);
+        }
+
+        .hero-visual {
+            flex: 0 0 320px;
+            height: 320px;
+            border-radius: 50% 50% 48% 52% / 55% 53% 47% 45%;
+            background: linear-gradient(135deg, var(--pink-mid), var(--pink-deep));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-visual .initials {
+            font-family: 'Fraunces', serif;
+            font-size: 5rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* SECTION HEADER */
+        .section-head {
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-head .eyebrow {
+            margin-bottom: 10px;
+        }
+
+        .section-head h2 {
+            font-size: 2.3rem;
+            color: var(--ink);
+        }
+
+        .section-head .underline {
+            width: 60px;
+            height: 4px;
+            background: var(--pink-deep);
+            border-radius: 4px;
+            margin: 14px auto 0;
+        }
+
+        /* ABOUT */
+        .about-wrap {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-card {
+            flex: 1;
+            min-width: 280px;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--pink-mid);
+        }
+
+        .about-card h3 {
+            color: var(--pink-deep);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .info-grid div {
+            background: var(--pink-soft);
+            border-radius: 14px;
+            padding: 14px 18px;
+        }
+
+        .info-grid .label {
+            font-size: 0.75rem;
+            color: var(--pink-deep);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .info-grid .value {
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skill-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 28px 24px;
+            border: 1px solid var(--pink-mid);
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-card .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: var(--pink-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 14px;
+            color: var(--pink-deep);
+        }
+
+        .skill-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+        }
+
+        .softskills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .softskill-pill {
+            background: var(--pink-soft);
+            color: var(--pink-deep);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid var(--pink-mid);
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 30px;
+            border: 1px solid var(--pink-mid);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .project-num {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            color: var(--pink-mid);
+            font-weight: 600;
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+        }
+
+        .project-card .desc {
+            color: var(--ink-light);
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        .project-card .repo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--pink-deep);
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 1px dashed var(--pink-deep);
+            padding: 8px 16px;
+            border-radius: 30px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .project-card .repo-link:hover {
+            background: var(--pink-soft);
+        }
+
+        /* HOBBIES */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hobby-card {
+            background: var(--pink-soft);
+            border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            transition: transform .3s;
+            border: 1px solid var(--pink-mid);
+        }
+
+        .hobby-card:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .hobby-card .emoji {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        .hobby-card .name {
+            font-weight: 700;
+            color: var(--pink-deep);
+            font-size: 0.95rem;
+        }
+
+        /* CONTACT / FOOTER */
+        footer {
+            background: linear-gradient(135deg, var(--pink-mid), var(--pink-deep));
+            text-align: center;
+            padding: 70px 8% 40px;
+            color: white;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+        }
+
+        footer h2 {
+            font-size: 2rem;
+            margin-bottom: 14px;
+        }
+
+        footer p {
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        footer .btn-primary {
+            background: white;
+            color: var(--pink-deep);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width:768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn-row {
+                justify-content: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Sahana N Anagadi</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="blob" style="width:380px;height:380px;background:var(--pink-mid);top:-120px;right:-100px;"></div>
+        <div class="hero-text">
+            <span class="eyebrow">2nd Sem &middot; B.Tech CSE &middot; REVA University</span>
+            <h1>Hi, I'm <span>Sahana</span> 🌸<br>building soft, sweet things in code.</h1>
+            <p>A CSE student exploring Python, C, and the web — one mini project at a time. Welcome to my little corner
+                of the internet.</p>
+            <div class="btn-row">
+                <a href="#projects" class="btn btn-primary">See my Projects</a>
+                <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <span class="initials">SA</span>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="blob" style="width:300px;height:300px;background:var(--pink-soft);bottom:-100px;left:-80px;"></div>
+        <div class="section-head">
+            <span class="eyebrow">About Me</span>
+            <h2>A little bit about me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="about-wrap">
+            <div class="about-card">
+                <h3>Who I am</h3>
+                <p>I'm Sahana N Anagadi, currently in my 2nd semester of B.Tech in Computer Science Engineering at REVA
+                    University, Bengaluru. I love learning how things work under the hood — from a line of Python to a
+                    websocket connection — and turning that curiosity into small projects.</p>
+                <div class="info-grid">
+                    <div>
+                        <div class="label">Course</div>
+                        <div class="value">B.Tech, CSE</div>
+                    </div>
+                    <div>
+                        <div class="label">Semester</div>
+                        <div class="value">2nd Semester</div>
+                    </div>
+                    <div>
+                        <div class="label">University</div>
+                        <div class="value">REVA University</div>
+                    </div>
+                    <div>
+                        <div class="label">Location</div>
+                        <div class="value">Bengaluru, India</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="section-head">
+            <span class="eyebrow">What I Know</span>
+            <h2>Skills & Tools</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="icon">🐍</div>
+                <h4>Python</h4>
+                <p>Writing scripts, solving problems, and exploring logic-building.</p>
+            </div>
+            <div class="skill-card">
+                <div class="icon">💻</div>
+                <h4>C Programming</h4>
+                <p>Strong fundamentals in data structures and procedural logic.</p>
+            </div>
+            <div class="skill-card">
+                <div class="icon">🌐</div>
+                <h4>Web Development</h4>
+                <p>Building simple websites and learning how the web comes together.</p>
+            </div>
+            <div class="skill-card">
+                <div class="icon">🎨</div>
+                <h4>Frontend Basics</h4>
+                <p>HTML, CSS fundamentals for crafting clean user interfaces.</p>
+            </div>
+            <div class="skill-card">
+                <div class="icon">🔌</div>
+                <h4>HTTP / WebSockets</h4>
+                <p>Understanding how the web talks — requests, responses, and real-time data.</p>
+            </div>
+        </div>
+
+        <div class="softskills">
+            <span class="softskill-pill">Communication</span>
+            <span class="softskill-pill">Teamwork</span>
+            <span class="softskill-pill">Time Management</span>
+            <span class="softskill-pill">Problem Solving</span>
+            <span class="softskill-pill">Adaptability</span>
+            <span class="softskill-pill">Creativity</span>
+            <span class="softskill-pill">Discipline</span>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="blob" style="width:260px;height:260px;background:var(--pink-mid);top:40px;right:-60px;"></div>
+        <div class="section-head">
+            <span class="eyebrow">My Work</span>
+            <h2>Mini Projects</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-num">01</div>
+                <h3>CCTV AI Dashboard</h3>
+                <p class="desc">A dashboard project exploring AI-assisted monitoring on CCTV feeds.</p>
+                <a href="https://github.com/sahananangadi-droid/cctv-ai-dashboard" target="_blank" class="repo-link">🔗
+                    View Repository</a>
+            </div>
+            <div class="project-card">
+                <div class="project-num">02</div>
+                <h3>Expense Tracker</h3>
+                <p class="desc">A simple app to track daily expenses and manage personal budgeting.</p>
+                <a href="https://github.com/sahananangadi-droid/expense-tracker" target="_blank" class="repo-link">🔗
+                    View Repository</a>
+            </div>
+            <div class="project-card">
+                <div class="project-num">03</div>
+                <h3>Task Manager</h3>
+                <p class="desc">A task management tool to organize, add, and track to-dos efficiently.</p>
+                <a href="https://github.com/sahananangadi-droid/task-manager" target="_blank" class="repo-link">🔗 View
+                    Repository</a>
+            </div>
+            <div class="project-card">
+                <div class="project-num">04</div>
+                <h3>Booking System</h3>
+                <p class="desc">A booking/reservation system built to practice full-stack logic and workflows.</p>
+                <a href="https://github.com/sahananangadi-droid/booking-system" target="_blank" class="repo-link">🔗
+                    View Repository</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOBBIES -->
+    <section id="hobbies">
+        <div class="section-head">
+            <span class="eyebrow">Beyond Code</span>
+            <h2>Hobbies & Interests</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="hobbies-grid">
+            <div class="hobby-card">
+                <div class="emoji">🎭</div>
+                <div class="name">Acting</div>
+            </div>
+            <div class="hobby-card">
+                <div class="emoji">💃</div>
+                <div class="name">Dancing</div>
+            </div>
+            <div class="hobby-card">
+                <div class="emoji">📚</div>
+                <div class="name">Reading Books</div>
+            </div>
+            <div class="hobby-card">
+                <div class="emoji">🎵</div>
+                <div class="name">Listening to Music</div>
+            </div>
+            <div class="hobby-card">
+                <div class="emoji">🏃‍♀️</div>
+                <div class="name">Daily Exercise</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <footer id="contact">
+        <h2>Let's connect 🌸</h2>
+        <p>Have a project idea or just want to say hi? My inbox is always open.</p>
+        <a href="mailto:sahananangadi@gmai.com" class="btn btn-primary">Email Me</a>
+        <div class="footer-bottom">&copy; 2026 Sahana N Anagadi. Made with care, one pixel at a time.</div>
+    </footer>
+
+</body>
+
+</html>
